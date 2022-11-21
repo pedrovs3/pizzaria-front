@@ -119,7 +119,7 @@ class ItemCard extends HTMLElement {
         margin-bottom: 2px;
         margin-top: 8px;
         text-transform: capitalize;
-        gap: 0px
+        gap: 0px;
         font-size: 1.5rem;
         align-self: flex-start;
       } 
@@ -128,6 +128,7 @@ class ItemCard extends HTMLElement {
         color: #AEAEB0;
         align-self: flex-start;
         font-size: 1rem;
+        font-weight: 400;
       }
 
       .item-card__likeButton {

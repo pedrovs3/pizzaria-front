@@ -70,15 +70,20 @@ section {
 
 .promo-section__list-items {
   background-color: var(--bg-overflow);
+  padding: 10px 20px;
   border-radius: 12px;
 }
 
 .promo-section__list-items li {
   display: flex;
   flex-direction: row;
-  padding: 10px 20px;
+  padding: 15px 0px;
   gap: 150px;
   overflow-x: scroll;
+}
+.section-fav__title {
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
 @media (max-width:680px) {

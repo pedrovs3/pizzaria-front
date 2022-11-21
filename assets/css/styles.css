@@ -20,3 +20,7 @@ body{
   color: var(--white-color);
   max-width: 100vw;
 }
+
+h2 {
+  font-size: 48px;
+}
