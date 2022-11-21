@@ -87,7 +87,7 @@ class ItemCard extends HTMLElement {
         align-items: center;
         justify-content: space-between;
         padding: 10px 20px;
-        max-width: 250px;
+        width: 250px;
         min-height: 300px;
         color: white;
         background-color: #3A3A3C;

@@ -58,8 +58,27 @@ section {
   margin-top: 25px;
 }
 
-.promo-title {
+.promo-section {
   margin-top: 57px;
+}
+
+.promo-section__title {
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.promo-section__list-items {
+  background-color: var(--bg-overflow);
+  border-radius: 12px;
+}
+
+.promo-section__list-items li {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 20px;
+  gap: 150px;
+  overflow-x: scroll;
 }
 
 @media (max-width:680px) {
