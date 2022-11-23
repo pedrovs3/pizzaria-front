@@ -92,7 +92,7 @@ class ItemCard extends HTMLElement {
         color: white;
         background-color: #3A3A3C;
         text-align: left;
-        border-radius: 12px;
+        border-radius: 8px;
       }
 
       .item-card__img {
@@ -101,7 +101,7 @@ class ItemCard extends HTMLElement {
         background-size: cover;
         object-fit: cover;
         background-position: center;
-        border-radius: 12px;
+        border-radius: 8px;
       }
 
       .item-card__info {
@@ -152,7 +152,7 @@ class ItemCard extends HTMLElement {
         border-radius: 50px;
 
         font-size: 2rem;
-        font-weight: 600;
+        font-weight: 700;
         color: #000000;
       }
 

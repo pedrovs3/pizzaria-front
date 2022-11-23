@@ -1,4 +1,8 @@
 @media (max-width: 680px) {
+    .main-banner__description {
+        display: none;
+    }
+
     main {
         padding: 10px 20px;
     }
