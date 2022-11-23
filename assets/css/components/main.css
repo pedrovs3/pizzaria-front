@@ -178,3 +178,104 @@ select {
   font-size: 120px;
   color: var(--accent-color);
 }
+
+input[type="radio"] {
+  display: grid;
+  place-content: center;
+  appearance: none;
+  background-color: var(--gray-700);
+  margin: 0;
+  font: inherit;
+  color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border: 0.15em solid var(--gray-700);
+  border-radius: 8px;
+}
+
+input[type="radio"]::before {
+  content: "✓";
+  font-size: 35px;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.contact-form__option {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  grid-area: radio;
+}
+
+form {
+  padding-top: 25px;
+}
+
+.contact-form__option label {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  font-size: 24px;
+  gap: 10px;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-areas:
+"input-1 message message"
+"input-2 message message"
+"input-3 message message"
+"radio message message"
+"button button button";
+  column-gap: 25px;
+}
+
+input[type="text"], input[type="tel"], input[type="email"], textarea {
+  border: none;
+  padding: 10px 20px;
+  font-size: 24px;
+  border-radius: 12px;
+  background: var(--gray-700);
+  color: var(--white-color);
+}
+
+textarea {
+  grid-area: message;
+  resize: none;
+}
+
+input[type="text"] {
+  grid-area: input-1;
+  max-height: 65px;
+}
+input[type="tel"] {
+  max-height: 65px;
+  grid-area: input-2;
+}
+input[type="email"] {
+  max-height: 65px;
+  grid-area: input-3;
+}
+
+.contact-form__submit {
+  grid-area: button;
+  padding: 15px 20px;
+  font-size: 24px;
+  margin-top: 20px;
+  border-radius: 50px;
+  font-weight: bold;
+  border: none;
+  color: var(--accent-color);
+  background: var(--gray-600);
+  transition: all 200ms ease-in-out;
+}
+
+.contact-form__submit:hover {
+  background: var(--accent-color);
+  color: var(--gray-600);
+  border-radius: 12px;
+}
