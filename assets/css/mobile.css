@@ -1,0 +1,13 @@
+@media (max-width: 680px) {
+    main {
+        padding: 10px 20px;
+    }
+
+    .header__buttons {
+        display: none;
+    }
+
+    .main-banner {
+        width: 100%;
+    }
+}
