@@ -6,6 +6,12 @@ class ItemCard extends HTMLElement {
       this.title = '';
       this.ingredients = '';
       this.price = '';
+      this.id = '';
+  }
+
+  handleButton(e) {
+    console.log(e.target.id)
+    console.log(e.target.classList.toggle('liked_button'))
   }
 
   connectedCallback() {
@@ -41,7 +47,9 @@ class ItemCard extends HTMLElement {
     price.innerHTML = `R$${this.price.split(',')[0]},<span class="cents">${this.price.split(',')[1]}</span>`;
 
     const likeButton = document.createElement('button');
+    likeButton.id = this.id;
     likeButton.classList.add('item-card__likeButton');
+    likeButton.onclick = this.handleButton
 
     const infoGroup = document.createElement('div');
 
@@ -60,7 +68,7 @@ class ItemCard extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['title', 'ingredients', 'price', 'image'];
+    return ['title', 'ingredients', 'price', 'image', 'id'];
   }
 
   attributeChangedCallback(nameAtr, oldValue, newValue) {
@@ -74,6 +82,8 @@ class ItemCard extends HTMLElement {
       this.price = newValue;
     }else if (nameAtr === 'image'){
       this.imageURL = newValue;
+    } else if (nameAtr === 'id'){
+      this.id = newValue;
     }
   }
 
@@ -87,7 +97,8 @@ class ItemCard extends HTMLElement {
         align-items: center;
         justify-content: space-between;
         padding: 10px 20px;
-        width: 250px;
+        width: 100%;
+        max-width: 250px;
         min-height: 300px;
         color: white;
         background-color: #3A3A3C;
@@ -138,6 +149,13 @@ class ItemCard extends HTMLElement {
         width: 40px;
         height: 35px;
         background: url(assets/img/like.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      
+      .liked_button {
+        background: url(assets/img/like_full.svg);
+        filter: drop-shadow(0px 0px 5px #F9C739);
         background-position: center;
         background-repeat: no-repeat;
       }

@@ -14,4 +14,50 @@
     .main-banner {
         width: 100%;
     }
+
+    .services__cards-container {
+        width: 100%;
+    }
+
+    .services__card {
+        width: 100%;
+    }
+
+    .fa-truck {
+        font-size: 60px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .grid-foods{
+        width: 100%;
+        overflow-x: hidden;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .contact-form__option {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    .contact-form__option label{
+        font-size: 1.2rem;
+    }
+
+    footer {
+        height: auto;
+        padding: 20px 0px;
+        max-width: 100%;
+    }
+
+    .container-footer{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
 }

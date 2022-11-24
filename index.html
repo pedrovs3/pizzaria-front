@@ -20,10 +20,10 @@
     <ul class="header__buttons">
       <li><a href="#" class="header__button">Home</a></li>
       <li>
-        <a href="#" class="header__button">Promoções</a>
+        <a href="#promo" class="header__button">Promoções</a>
       </li>
       <li>
-        <a href="#" class="header__button">Produtos</a>
+        <a href="#produtos" class="header__button">Produtos</a>
       </li>
     </ul>
   </header>
@@ -38,12 +38,12 @@
       </span>
     </div>
 
-    <section class="promo-section">
+    <section id="promo" class="promo-section">
       <h2 class="promo-section__title">Pizzas em <span class="accent-text">Promoção</span></h2>
       <ul class="outer-box">
         <li>
-          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
-          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
+          <item-card id="teste" title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
+          <item-card id="mussarela" title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
           <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
           <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
           <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
@@ -64,7 +64,7 @@
         </li>
       </ul>
     </section>
-    <section class="section-foods">
+    <section id="produtos" class="section-foods">
       <h2 class="underline-accent">Cardápio</h2>
 
       <ul class="outer-box filters-list">
@@ -158,25 +158,28 @@
     </section>
   </main>
   <footer>
-    <span>a</span>
-    <span>Pedro V | Guilherme J</span>
-    <ul class="social-container">
-      <li>
-        <a class="social-container__button" href="#">
-          <i class="fa-brands fa-youtube"></i>
-        </a>
-      </li>
-      <li>
-        <a class="social-container__button" href="#">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-      </li>
-      <li>
-        <a class="social-container__button" href="#">
-          <i class="fa-brands fa-facebook-f"></i>
-        </a>
-      </li>
-    </ul>
+    <div class="container-footer">
+      <span></span>
+      <span>Pedro V | Guilherme J</span>
+      <ul class="container-footer__social-container">
+        <li>
+          <a class="social-container__button" href="#">
+            <i class="fa-brands fa-youtube"></i>
+          </a>
+        </li>
+        <li>
+          <a class="social-container__button" href="#">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a class="social-container__button" href="#">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
   </footer>
   <!-- <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card> -->
 </body>
