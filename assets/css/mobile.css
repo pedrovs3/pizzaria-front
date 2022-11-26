@@ -60,4 +60,8 @@
         flex-direction: column;
         gap: 10px;
     }
+
+    .main-container-login {
+        width: 100%;
+    }
 }
