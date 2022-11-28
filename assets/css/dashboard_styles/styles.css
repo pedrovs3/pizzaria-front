@@ -1,0 +1,10 @@
+@import url(../../css/colors.css);
+@import url(../../css/reset.css);
+@import url(./header_dashboard.css);
+@import url(./main_dashboard.css);
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg-color);
+}
+
