@@ -12,22 +12,30 @@
 <body>
   <header class="dash-header">
     <img src="../../assets/img/Logo.png" alt="Logo da empresa Pizza paradiso">
-    <button onclick="Window.history.back()" type="button" class="dash-header__exit-button"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    <button onclick="location.href = '../admin.html'" type="button" class="dash-header__exit-button"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
   </header>
   <main>
     <div class="grid-content">
-      <table class="table-products">
-        <thead>
-        <tr class="table-products__titles-row">
-          <th>Categoria</th>
-          <th>Tipo</th>
-          <th>Nome</th>
-          <th>Foto</th>
-          <th>Preço</th>
-          <th>Ingredientes</th>
-        </tr>
-        </thead>
-        <tbody>
+      <div class="grid-content__main-container">
+        <div class="main-container__menu">
+          <ul>
+            <li>
+              <a href="./registers.html"><i class="fa-solid fa-plus"></i></a>
+            </li>
+          </ul>
+        </div>
+        <table class="table-products">
+          <thead>
+          <tr class="table-products__titles-row">
+            <th>Categoria</th>
+            <th>Tipo</th>
+            <th>Nome</th>
+            <th>Foto</th>
+            <th>Preço</th>
+            <th>Ingredientes</th>
+          </tr>
+          </thead>
+          <tbody>
           <tr class="table-products__product-row">
             <th>Categoria</th>
             <th>Tipo</th>
@@ -100,14 +108,35 @@
             <th>Preço</th>
             <th>Ingredientes</th>
           </tr>
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
       <div class="grid-content__infos-container">
         <span class="grid-content__title">Estatísticas</span>
         <div class="grid-content__insights-container">
           <div class="grid-content__insight-container">
-            <span>Title</span>
-            <span>20</span>
+            <h3>Title</h3>
+            <span class="number">20</span>
+          </div>
+          <div class="grid-content__insight-container">
+            <h3>Title</h3>
+            <span class="number">20</span>
+          </div>
+          <div class="grid-content__insight-container">
+            <h3>Title</h3>
+            <span class="number">20</span>
+          </div>
+          <div class="grid-content__insight-container">
+            <h3>Title</h3>
+            <span class="number">20</span>
+          </div>
+          <div class="grid-content__insight-container">
+            <h3>Title</h3>
+            <span class="number">20</span>
+          </div>
+          <div class="grid-content__insight-container">
+            <h3>Title</h3>
+            <span class="number">20</span>
           </div>
         </div>
       </div>

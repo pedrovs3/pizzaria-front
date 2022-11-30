@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <title>Pizza Paradiso - CMS</title>
+
+  <script src="https://kit.fontawesome.com/e2a54895da.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../assets/css/register_styles/styles.css">
+</head>
+<body>
+  <header class="header">
+    <img src="../../assets/img/Logo.png" alt="logo da empresa">
+  </header>
+  <main>
+    <div class="main__menu-select">
+      <div class="user">
+        <input id="new_user_option" type="radio" name="option" value="new_user"/>
+        <label for="new_user_option">Usuário</label>
+      </div>
+      <span class="line"></span>
+      <div class="product">
+        <input id="new_product_option" type="radio" name="option" value="new_product"/>
+        <label for="new_product_option">Produto</label>
+      </div>
+
+    </div>
+    <div class="main__form">
+      <form method="post">
+        <formgroup>
+          <input class="input-string" type="text" placeholder="name">
+          <input class="input-string"  type="text" placeholder="name">
+          <input class="input-string"  type="text" placeholder="name">
+        </formgroup>
+            <label for="imagem" class="file">
+              <i class="fa-regular fa-user"></i>
+            </label>
+            <input type="file" name="image-input" id="imagem">
+      </form>
+    </div>
+    <button class="button_cadastro" type="button">Cadastrar</button>
+  </main>
+</body>
+</html>

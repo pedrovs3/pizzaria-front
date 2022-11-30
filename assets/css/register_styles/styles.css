@@ -1,0 +1,24 @@
+@import url(../components/scrollbar.css);
+@import url(../mobile.css);
+@import url(../reset.css);
+@import url(../colors.css);
+@import url(./header.css);
+@import url(./main.css);
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body{
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg-color);
+    color: var(--white-color);
+    max-width: 100vw;
+}
+
+h2 {
+    font-size: 48px;
+}
