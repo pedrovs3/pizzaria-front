@@ -22,3 +22,31 @@ body{
 h2 {
     font-size: 48px;
 }
+
+@media (max-width: 1300px) {
+    .main__menu-select {
+        width: 90%;
+    }
+
+    .header {
+        height: 15vh
+    }
+
+    .main__form form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .main__form {
+        width: 90%;
+        height: 100%;
+    }
+
+    .file {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

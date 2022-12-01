@@ -64,8 +64,8 @@ input[type="radio"]:checked + label {
 }
 
 .main__form {
-    width: 50vw;
-    height: 500px;
+    width: 50%;
+    height: 50vh;
     padding: 20px;
     background: var(--bg-overflow);
     border-radius: 12px;
@@ -109,7 +109,7 @@ formgroup {
 }
 
 .input-string {
-    width: 400px;
+    width: 100%;
     color: #afafb2;
     height: 58px;
     font-size: 18px;
