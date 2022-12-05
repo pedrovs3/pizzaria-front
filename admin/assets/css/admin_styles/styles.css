@@ -1,6 +1,6 @@
-@import url(../../css/colors.css);
-@import url(../../css/reset.css);
-@import url(./main.css);
+@import url(../../../../assets/css/colors.css);
+@import url(../../../../assets/css/reset.css);
+@import url(main.css);
 
 body {
     background: var(--bg-color);
@@ -23,7 +23,7 @@ body div {
 }
 
 body::after {
-    content: url("../../img/cheese_upper.png");
+    content: url("../../../../assets/img/cheese_upper.png");
     position: absolute;
     top: 0;
     right: 0;
@@ -31,7 +31,7 @@ body::after {
 }
 
 body::before {
-    content: url("../../img/cheese_lower.png");
+    content: url("../../../../assets/img/cheese_lower.png");
     position: absolute;
     bottom: -5px;
     left: 0;

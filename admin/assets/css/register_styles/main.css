@@ -14,7 +14,7 @@ main {
     height: 50px;
     width: 30vw;
     background: var(--bg-overflow);
-    border-radius: 14px;
+    border-radius: var(--radius-default);
     justify-content: space-between;
 }
 
@@ -68,7 +68,7 @@ input[type="radio"]:checked + label {
     height: 50vh;
     padding: 20px;
     background: var(--bg-overflow);
-    border-radius: 12px;
+    border-radius: var(--radius-default);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,20 +97,22 @@ input[type="file"] {
     padding: 70px 100px;
     color: var(--accent-color);
     font-size: 100px;
-    border-radius: 8px;
+    border-radius: 12px;
     justify-self: center;
 }
 
-formgroup {
+fieldset {
     grid-area: a;
     display: flex;
+    outline: none;
+    border: none;
     flex-direction: column;
     gap: 20px;
 }
 
 .input-string {
     width: 100%;
-    color: #afafb2;
+    color: var(--font-color);
     height: 58px;
     font-size: 18px;
     appearance: none;
@@ -126,7 +128,7 @@ formgroup {
 
 .button_cadastro {
     appearance: none;
-    border-radius: 12px;
+    border-radius: 50px;
     margin-top: 25px;
     width: 50vw;
     height: 60px;
@@ -135,21 +137,27 @@ formgroup {
 
     font-size: 18px;
     font-weight: bold;
+    transition: all 300ms ease-in-out;
 }
 
-.button_cadastro:before {
-    content: "";
+.button_cadastro:hover {
+    background-color: #ffb500;
+    border-radius: 16px;
+}
+
+#promo-label {
+    color: var(--font-color);
+}
+
+select {
     width: 100%;
-    height: 100px;
-    display: block;
-    top: 0;
-    background: url("../../img/wave (9).svg");
-    background-position: bottom;
-    background-size: cover;
-    background-repeat: no-repeat;
+    color: var(--font-color);
+    padding: 5px 15px;
+    height: 58px;
+    font-size: 18px;
+    border: none;
+    background: var(--gray-700);
+    border-radius: 8px;
 }
 
-/*.button_cadastro:hover {*/
-/*    */
-/*}*/
 
