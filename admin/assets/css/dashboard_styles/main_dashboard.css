@@ -26,15 +26,16 @@ tbody {
     overflow: auto;
     border-radius: 12px;
 }
+
 thead, tbody tr {
     display: table;
     width: 100%;
-    table-layout: fixed;/* even columns width , fix width of table too*/
+    table-layout: fixed; /* even columns width , fix width of table too*/
 }
 
 .table-products__titles-row {
     height: 70px;
-    color:var(--accent-color);
+    color: var(--accent-color);
     background: var(--bg-overflow);
 }
 

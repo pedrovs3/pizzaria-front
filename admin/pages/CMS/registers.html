@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta charset="UTF-8">
-  <title>Pizza Paradiso - CMS</title>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta charset="UTF-8">
+    <title>Pizza Paradiso - CMS</title>
 
-  <script src="https://kit.fontawesome.com/e2a54895da.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../../assets/css/register_styles/styles.css">
-  <script src="../../js/app.js" type="module" defer></script>
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/e2a54895da.js"></script>
+    <link href="../../assets/css/register_styles/styles.css" rel="stylesheet">
+    <script defer src="../../js/app.js" type="module"></script>
 </head>
 <body>
-  <header class="header">
-    <img src="../../../assets/img/Logo.png" alt="logo da empresa">
-  </header>
-  <main>
+<header class="header">
+    <img alt="logo da empresa" src="../../../assets/img/Logo.png">
+</header>
+<main>
     <div class="main__menu-select">
-      <div class="user">
-        <input id="new_user_option" type="radio" name="option" value="new_user" checked/>
-        <label for="new_user_option">Usuário</label>
-      </div>
-      <span class="line"></span>
-      <div class="product">
-        <input id="new_product_option" type="radio" name="option" value="new_product"/>
-        <label for="new_product_option">Produto</label>
-      </div>
+        <div class="user">
+            <input checked id="new_user_option" name="option" type="radio" value="new_user"/>
+            <label for="new_user_option">Usuário</label>
+        </div>
+        <span class="line"></span>
+        <div class="product">
+            <input id="new_product_option" name="option" type="radio" value="new_product"/>
+            <label for="new_product_option">Produto</label>
+        </div>
 
     </div>
     <div class="main__form">
-      <form class="main__form__form" method="POST">
-        <fieldset>
-          <input class="input-string" name="name" type="text" placeholder="Name" value="nome">
-          <input class="input-string" name="email" type="email" placeholder="E-mail" value="nome@nome.com">
-          <input class="input-string" name="cellphone" type="tel" placeholder="Telefone" value="nome">
-          <input class="input-string" name="password" type="password" placeholder="Password" value="nome">
-        </fieldset>
-            <label for="imagem" class="file">
-              <i class="fa-regular fa-user"></i>
+        <form class="main__form__form" method="POST">
+            <fieldset>
+                <input class="input-string" name="name" placeholder="Name" type="text" value="nome">
+                <input class="input-string" name="email" placeholder="E-mail" type="email" value="nome@nome.com">
+                <input class="input-string" name="cellphone" placeholder="Telefone" type="tel" value="nome">
+                <input class="input-string" name="password" placeholder="Password" type="password" value="nome">
+            </fieldset>
+            <label class="file" for="imagem">
+                <i class="fa-regular fa-user"></i>
             </label>
-            <input type="file" name="image-input" id="imagem">
+            <input id="imagem" name="image-input" type="file">
 
-      </form>
+        </form>
     </div>
     <button class="button_cadastro" type="submit">Cadastrar</button>
-  </main>
+</main>
 </body>
 </html>

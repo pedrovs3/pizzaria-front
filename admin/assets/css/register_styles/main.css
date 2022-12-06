@@ -1,5 +1,5 @@
 main {
-    width: 100vw;
+    max-width: 100vw;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -48,7 +48,7 @@ input[type="radio"] {
     transition: all 120ms ease-in-out;
 }
 
-input[type="radio"]:checked{
+input[type="radio"]:checked {
     background: var(--gray-700);
 }
 
@@ -65,7 +65,7 @@ input[type="radio"]:checked + label {
 
 .main__form {
     width: 50%;
-    height: 50vh;
+    height: fit-content;
     padding: 20px;
     background: var(--bg-overflow);
     border-radius: var(--radius-default);

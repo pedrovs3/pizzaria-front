@@ -11,7 +11,7 @@ html {
     scroll-behavior: smooth;
 }
 
-body{
+body {
     min-height: 100vh;
     font-family: 'Roboto', sans-serif;
     background: var(--bg-color);
@@ -24,14 +24,6 @@ h2 {
 }
 
 @media (max-width: 1300px) {
-    main {
-        height: 85vh;
-        max-width: 100vw;
-    }
-    .main__menu-select {
-        width: 90%;
-    }
-
     .header {
         top: 0;
         height: fit-content;
@@ -59,4 +51,14 @@ h2 {
     .button_cadastro {
         width: 90%;
     }
+}
+
+@media (max-width: 720px) {
+    /*body {*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*}*/
+    /*main {*/
+    /*    flex-grow: 1;*/
+    /*}*/
 }
