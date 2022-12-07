@@ -1,3 +1,5 @@
+import { api } from '../../api/api.js';
+
 const infosContainer = document.querySelector('.grid-content__insights-container');
 
 const createInfoCard = (title, number) => {
@@ -8,8 +10,22 @@ const createInfoCard = (title, number) => {
   const span = document.createElement('span');
   span.textContent = number;
   span.classList.add('number');
+
+  div.appendChild(h3);
+  div.appendChild(span);
+
+  infosContainer.appendChild(div);
 };
 
-const fetchAPI = () => {
-
+const usersCountFetch = async () => {
+  const { data } = await api.get('/user/count');
+  return data.count;
 };
+
+const pizzasCountFetch = async () => {
+  const { data } = await api.get('/pizza/count');
+  return data.count;
+};
+
+createInfoCard('Users', await usersCountFetch());
+createInfoCard('Pizzas', await pizzasCountFetch());

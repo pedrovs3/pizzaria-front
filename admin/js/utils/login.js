@@ -20,13 +20,14 @@ const getFormData = () => {
 const checkLogin = async () => {
   const json = getFormData();
 
-  console.log(JSON.stringify(json));
-
   try {
     const { data } = await api.post('/user/login', { ...json });
     const { token } = data.payload;
 
-    api.defaults.headers.common.Authorization = `Bearer ${token}`;
+    localStorage.setItem('access_token', token);
+
+    // eslint-disable-next-line
+        // axios.defaults.headers.common.Authorization = `Bearer ${token}`; ## NAO FUNCIONANDO POIS O AXIOS SEMPRE É INSTANCIADO EM UM NOVO ARQUIVO.
 
     return data;
   } catch (e) {
@@ -38,13 +39,15 @@ const handleClick = async (e) => {
   try {
     const data = await checkLogin();
     if (!data.error) {
+      // eslint-disable-next-line no-restricted-globals
       location.href = './pages/CMS/main_dashboard.html';
     } else {
       alert(data.message);
+      // eslint-disable-next-line no-restricted-globals
       location.reload();
     }
   } catch (err) {
-    console.log(e);
+    alert(err);
   }
 };
 
