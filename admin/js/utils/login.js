@@ -42,9 +42,9 @@ const handleClick = async (e) => {
       // eslint-disable-next-line no-restricted-globals
       location.href = './pages/CMS/main_dashboard.html';
     } else {
-      alert(data.message);
+      swal('Oops!', 'Something went wrong!', 'error');
       // eslint-disable-next-line no-restricted-globals
-      location.reload();
+      // location.reload();
     }
   } catch (err) {
     alert(err);

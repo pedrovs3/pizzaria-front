@@ -1,4 +1,5 @@
 @import url(../../../../assets/css/colors.css);
+@import url(../../../../assets/css/swal_style.css);
 @import url(../../../../assets/css/reset.css);
 @import url(main.css);
 
@@ -14,7 +15,7 @@ body {
     margin: 0 60px;
 }
 
-body div {
+body .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +40,7 @@ body::before {
 }
 
 @media (max-width: 680px) {
-    body::after, body::before  {
+    body::after, body::before {
         display: none;
     }
 
