@@ -1,17 +1,36 @@
-class ItemCard extends HTMLElement {
+class ItemCard {
   constructor() {
-      super();
-      this.shadow = this.attachShadow({ mode: 'open' });
-      this.imageURL = 'https://images7.alphacoders.com/596/thumb-1920-596343.jpg';
-      this.title = '';
-      this.ingredients = '';
-      this.price = '';
-      this.id = '';
+    this.shadow = document.createElement("div")
+    this.imageURL = "";
+    this.title = "";
+    this.ingredients = "";
+    this.price = "";
+    this.id = "";
+  }
+
+  setIngredients(value) {
+    this.ingredients = value
+  }
+
+  setId(value) {
+    this.id = value
+  }
+  
+  setTitle(value) {
+    this.title = value
+  } 
+
+  setImage(value) {
+    this.imageURL = value
+  }
+  
+  setPrice(value) {
+    this.price = value
   }
 
   handleButton(e) {
-    console.log(e.target.id)
-    console.log(e.target.classList.toggle('liked_button'))
+    console.log(e.target.id);
+    console.log(e.target.classList.toggle("liked_button"));
   }
 
   connectedCallback() {
@@ -19,43 +38,45 @@ class ItemCard extends HTMLElement {
     this.shadow.appendChild(this.styles());
   }
 
-  component(){
-    const card = document.createElement('div');
-    card.classList.add('item-card');
+  component() {
+    const card = document.createElement("div");
+    card.classList.add("item-card");
 
-    const img = document.createElement('img');
-    img.classList.add('item-card__img');
-    img.setAttribute('src', this.imageURL);
+    const img = document.createElement("img");
+    img.classList.add("item-card__img");
+    img.setAttribute("src", this.imageURL);
 
-    const content = document.createElement('div');
-    content.classList.add('item-card__text-content');
+    const content = document.createElement("div");
+    content.classList.add("item-card__text-content");
 
-    const infoDiv = document.createElement('div');
-    infoDiv.classList.add('item-card__info');
+    const infoDiv = document.createElement("div");
+    infoDiv.classList.add("item-card__info");
 
-    const title = document.createElement('h3');
-    title.classList.add('item-card__title');
+    const title = document.createElement("h3");
+    title.classList.add("item-card__title");
     title.textContent = this.title;
 
-    const ingredients = document.createElement('span');
-    ingredients.classList.add('item-card__ingredients');
+    const ingredients = document.createElement("span");
+    ingredients.classList.add("item-card__ingredients");
     ingredients.textContent = this.ingredients;
 
-    const price = document.createElement('div');
-    price.classList.add('item-card__price');
+    const price = document.createElement("div");
+    price.classList.add("item-card__price");
 
-    price.innerHTML = `R$${this.price.split(',')[0]},<span class="cents">${this.price.split(',')[1]}</span>`;
+    price.innerHTML = `R$${this.price.split(",")[0]},<span class="cents">${
+      this.price.split(",")[1]
+    }</span>`;
 
-    const likeButton = document.createElement('button');
+    const likeButton = document.createElement("button");
     likeButton.id = this.id;
-    likeButton.classList.add('item-card__likeButton');
-    likeButton.onclick = this.handleButton
+    likeButton.classList.add("item-card__likeButton");
+    likeButton.onclick = this.handleButton;
 
-    const infoGroup = document.createElement('div');
+    const infoGroup = document.createElement("div");
 
     infoGroup.appendChild(title);
     infoGroup.appendChild(ingredients);
-    content.appendChild(infoGroup)
+    content.appendChild(infoGroup);
     content.appendChild(likeButton);
 
     infoDiv.appendChild(img);
@@ -67,28 +88,8 @@ class ItemCard extends HTMLElement {
     return card;
   }
 
-  static get observedAttributes() {
-    return ['title', 'ingredients', 'price', 'image', 'id'];
-  }
-
-  attributeChangedCallback(nameAtr, oldValue, newValue) {
-    // this.nameAtr = newValue;
-
-    if (nameAtr === 'title') {
-      this.title = newValue;
-    } else if (nameAtr === 'ingredients') {
-      this.ingredients = newValue;
-    } else if (nameAtr === 'price'){
-      this.price = newValue;
-    }else if (nameAtr === 'image'){
-      this.imageURL = newValue;
-    } else if (nameAtr === 'id'){
-      this.id = newValue;
-    }
-  }
-
   styles() {
-    const styles = document.createElement('style');
+    const styles = document.createElement("style");
     styles.textContent = `
       .item-card {
         position: relative;
@@ -184,4 +185,4 @@ class ItemCard extends HTMLElement {
   }
 }
 
-customElements.define('item-card', ItemCard);
+export { ItemCard }
