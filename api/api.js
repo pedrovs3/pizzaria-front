@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-export let api = axios.create({
+export const api = axios.create({
   baseURL: 'https://pizza-cms-api.netlify.app/.netlify/functions/server',
   headers: {
     common: {

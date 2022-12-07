@@ -9,7 +9,9 @@
 
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/e2a54895da.js"></script>
     <link href="../../assets/css/register_styles/styles.css" rel="stylesheet">
-    <script defer src="../../js/app.js" type="module"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script defer src="../../js/utils/register.js" type="module"></script>
 </head>
 <body>
 <header class="header">
@@ -39,7 +41,7 @@
             <label class="file" for="imagem">
                 <i class="fa-regular fa-user"></i>
             </label>
-            <input id="imagem" name="image-input" type="file">
+            <input id="imagem" name="profile_picture" type="file">
 
         </form>
     </div>
