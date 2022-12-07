@@ -1,6 +1,6 @@
 class ItemCard {
   constructor() {
-    this.shadow = document.createElement("div")
+    this.shadow = document.createElement("div");
     this.imageURL = "";
     this.title = "";
     this.ingredients = "";
@@ -9,23 +9,23 @@ class ItemCard {
   }
 
   setIngredients(value) {
-    this.ingredients = value
+    this.ingredients = value;
   }
 
   setId(value) {
-    this.id = value
+    this.id = value;
   }
-  
+
   setTitle(value) {
-    this.title = value
-  } 
+    this.title = value;
+  }
 
   setImage(value) {
-    this.imageURL = value
+    this.imageURL = value;
   }
-  
+
   setPrice(value) {
-    this.price = value
+    this.price = value;
   }
 
   handleButton(e) {
@@ -63,8 +63,8 @@ class ItemCard {
     const price = document.createElement("div");
     price.classList.add("item-card__price");
 
-    price.innerHTML = `R$${this.price.split(",")[0]},<span class="cents">${
-      this.price.split(",")[1]
+    price.innerHTML = `R$${this.price.split(".")[0]},<span class="cents">${
+      this.price.split(".")[1]
     }</span>`;
 
     const likeButton = document.createElement("button");
@@ -185,4 +185,4 @@ class ItemCard {
   }
 }
 
-export { ItemCard }
+export { ItemCard };
