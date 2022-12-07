@@ -95,4 +95,8 @@
     .grid-content__insights-container {
         max-height: 54vh;
     }
+
+    .dash-header {
+        padding: 10px 20px;
+    }
 }
