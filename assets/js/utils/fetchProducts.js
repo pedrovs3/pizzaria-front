@@ -1,5 +1,6 @@
 export default async () => {
-    const response = await fetch("https://api-pizza-client.netlify.app/.netlify/functions/server/product") 
-    const json = await response.json()
-    return json
-}
+  const { data } = await axios(
+    "https://api-pizza-client.netlify.app/.netlify/functions/server/product"
+  );
+  return data;
+};

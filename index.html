@@ -9,10 +9,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="shortcut icon" href="./assets/img/favicon-16x16.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
   <script src="./assets/js/components/ItemCard.js" defer type="module"></script>
   <script src="https://kit.fontawesome.com/e2a54895da.js" crossorigin="anonymous"></script>
   <script src="./assets/js/app.js" defer type="module"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <script src="./assets/js/form.js" defer type="module"></script>
+
 </head>
 <body>
   <header class="header">
@@ -42,14 +46,7 @@
       <h2 class="promo-section__title">Pizzas em <span class="accent-text">Promoção</span></h2>
       <ul class="outer-box">
         <li>
-          <item-card id="teste" title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
-          <item-card id="mussarela" title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
-          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
-          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
-          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
-          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
-          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
-          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>
+      
         </li>
       </ul>
     </section>
@@ -69,36 +66,31 @@
 
       <ul class="outer-box filters-list">
         <li class="select-input">
-          <span class="select-input__title">Tipo</span>
-          <select class="select-input__option">
+          <span class="select-input__title">Categoria</span>
+          <select class="select-input__option" id="category-filter">
             <option value="Any" selected>Any</option>
-            <option value="Bebida">Bebida</option>
-            <option value="Pizza">Pizza</option>
           </select>
         </li>
         <li class="select-input">
           <span class="select-input__title">Tipo</span>
           <select class="select-input__option">
             <option value="Any" selected>Any</option>
-            <option value="Bebida">Bebida</option>
-            <option value="Pizza">Pizza</option>
           </select>
         </li>
         <li class="select-input">
           <span class="select-input__title">Tipo</span>
           <select class="select-input__option">
             <option value="Any" selected>Any</option>
-            <option value="Bebida">Bebida</option>
-            <option value="Pizza">Pizza</option>
           </select>
-        </li> <li class="select-input">
+        </li> 
+        <!-- <li class="select-input">
         <span class="select-input__title">Tipo</span>
         <select class="select-input__option">
           <option value="Any" selected>Any</option>
           <option value="Bebida">Bebida</option>
           <option value="Pizza">Pizza</option>
         </select>
-      </li>
+      </li> -->
       </ul>
 
       <div class="grid-foods">
@@ -132,7 +124,7 @@
       <h2>Fale com a gente!</h2>
       <form class="contact-form">
         <input type="text" id="name-input" placeholder="Nome">
-        <input type="tel" id="phone-input" placeholder="Telefone">
+        <!-- <input type="tel" id="phone-input" placeholder="Telefone"> -->
         <input type="tel" id="cell-input" placeholder="Celular">
         <input type="email" id="mail-input" placeholder="E-mail">
         <div class="contact-form__option">

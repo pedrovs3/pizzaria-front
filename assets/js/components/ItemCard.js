@@ -1,3 +1,5 @@
+import { deslike, like } from "../utils/likeUtil.js";
+
 class ItemCard {
   constructor() {
     this.shadow = document.createElement("div");
@@ -28,9 +30,11 @@ class ItemCard {
     this.price = value;
   }
 
-  handleButton(e) {
-    console.log(e.target.id);
-    console.log(e.target.classList.toggle("liked_button"));
+  async handleButton(e) {
+    const { id } = e.target;
+    const clickStatus = e.target.classList.toggle("liked_button");
+    if (clickStatus)  await like(id);
+    else await deslike(id);
   }
 
   connectedCallback() {
