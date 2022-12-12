@@ -1,15 +1,8 @@
 import { api } from '../../api/api.js';
-import { fetchTypes } from '../../admin/js/utils/register.js';
+import { fetchTypes } from './utils/register.js';
 
 const form = document.querySelector('fieldset');
 // const buttonSendFormData = document.querySelector('.button_cadastro');
-
-// const handleClick = (e) => {
-//   e.preventDefault();
-//   const ingredients = getCheckInputsValues(document.querySelectorAll(".ingredient-box"));
-//
-//   console.log(ingredients)
-// }
 
 const fetchCategory = async (divToAppend) => {
   try {
@@ -66,7 +59,7 @@ export const dinamicForm = async (option) => {
     const promoOption = document.querySelector('input[name="promo"]');
     const divToAppend = document.querySelector('.promo-option');
 
-    promoOption.addEventListener('click',() => {
+    promoOption.addEventListener('click', () => {
       if (promoOption.checked) {
         divToAppend.innerHTML = `
                 <input class="input-string" type="number" placeholder="%">
@@ -80,15 +73,3 @@ export const dinamicForm = async (option) => {
     // buttonSendFormData.addEventListener('click', handleClick(e));
   }
 };
-
-export const getCheckInputsValues = (inputs = []) => {
-  const values = [];
-
-  inputs.forEach((input) => {
-    if (input.checked) values.append(input.value);
-  });
-
-  return values;
-};
-
-

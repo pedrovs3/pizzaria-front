@@ -1,7 +1,6 @@
 import { dinamicForm } from '../dinamicForm.js';
 import { api } from '../../../api/api.js';
 
-
 const options = document.querySelectorAll('input[name="option"]');
 const button = document.querySelector('.button_cadastro');
 const form = document.querySelector('.main__form__form');
@@ -14,21 +13,36 @@ for (const option of options) {
   });
 }
 
+export const getCheckInputsValues = (inputs = []) => {
+  const values = [];
+
+  inputs.forEach((input) => {
+    if (input.checked) values.push(input.value);
+  });
+
+  return values;
+};
+
 const getFormData = () => new FormData(form);
 
 const handleClick = async () => {
-  const formData = getFormData();
+  if (selectedOption === 'new_user') {
+    const formData = getFormData();
 
-  for (const pair of formData.entries()) {
-    console.log(`${pair[0]}, ${pair[1]}`);
+    for (const pair of formData.entries()) {
+      console.log(`${pair[0]}, ${pair[1]}`);
+    }
+
+    try {
+      const response = await api.post('/user/register', formData);
+      swal('Parabens!', 'Usuário criado com sucesso!', 'success');
+      return response;
+    } catch (e) {
+      swal('Oops!', 'Something went wrong!', 'error');
+    }
   }
-
-  try {
-    const response = await api.post('/user/register', formData);
-    swal('Parabens!', 'Usuário criado com sucesso!', 'success');
-    return response;
-  } catch (e) {
-    swal('Oops!', 'Something went wrong!', 'error');
+  if (selectedOption === 'new_product') {
+    console.log(getCheckInputsValues(document.querySelectorAll('.ingredient-box')));
   }
 };
 
@@ -51,6 +65,5 @@ export const fetchTypes = async (categoryInput, divToAppend) => {
     console.log(e);
   }
 };
-
 
 button.addEventListener('click', handleClick);
