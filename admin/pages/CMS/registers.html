@@ -12,6 +12,30 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script defer src="../../js/utils/register.js" type="module"></script>
+    <script>
+        const fetchTypes = async (categoryInput, divToAppend) => {
+            try {
+                if(divToAppend.lastElementChild) {
+                    divToAppend.innerHTML = '';
+                }
+
+                let typeSelected = categoryInput.value.toLowerCase();
+                if(typeSelected.includes("bebida")) typeSelected = "drink"
+
+                const { data } = await axios.get(`https://pizza-cms-api.netlify.app/.netlify/functions/server/${typeSelected}/types`, {headers: { common:{ Authorization: `Bearer ${localStorage.getItem('access_token')}`}}});
+
+                data.payload.forEach((type) => {
+                    const option = document.createElement('option');
+                    option.value = type.name;
+                    option.textContent = type.name;
+
+                    divToAppend.appendChild(option);
+                });
+            } catch (e) {
+                console.log(e);
+            }
+        };
+    </script>
 </head>
 <body>
 <header class="header">
@@ -28,7 +52,6 @@
             <input id="new_product_option" name="option" type="radio" value="new_product"/>
             <label for="new_product_option">Produto</label>
         </div>
-
     </div>
     <div class="main__form">
         <form class="main__form__form" method="POST">
@@ -45,7 +68,7 @@
 
         </form>
     </div>
-    <button class="button_cadastro" type="submit">Cadastrar</button>
+    <button class="button_cadastro" type="button">Cadastrar</button>
 </main>
 </body>
 </html>
