@@ -21,7 +21,10 @@ const fetchCategory = async (divToAppend) => {
 };
 
 export const dinamicForm = async (option) => {
+  const fileIcon = document.querySelector('.file');
   if (option === 'new_user') {
+    fileIcon.innerHTML = '<i class="fa-regular fa-user"></i>';
+
     form.innerHTML = `
         <input class="input-string" name="name" type="text" placeholder="Name">
         <input class="input-string" name="email" type="email" placeholder="E-mail">
@@ -31,6 +34,9 @@ export const dinamicForm = async (option) => {
   }
 
   if (option === 'new_product') {
+    const fileIcon = document.querySelector('.file');
+    fileIcon.innerHTML = '<i class="fa-solid fa-upload"></i>';
+
     const fileInput = document.querySelector('#imagem');
     fileInput.name = 'picture';
 
@@ -47,8 +53,6 @@ export const dinamicForm = async (option) => {
             <span class="title_ingredients">Ingredientes</span>
             <li style="margin-top: 10px">
                 <div class="ingredient-box">
-                    <input class="ingredient-box" type="checkbox" name="ingredient" id="1" value="Queijo">
-                    <label for="1">Queijo</label>
                 </div>
                
             </li>
