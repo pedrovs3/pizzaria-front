@@ -31,18 +31,21 @@ export const dinamicForm = async (option) => {
   }
 
   if (option === 'new_product') {
+    const fileInput = document.querySelector('#imagem');
+    fileInput.name = 'picture';
+
     form.innerHTML = `
-        <input class="input-string" name="name" type="text" placeholder="Name">
-        <select name="category"  id="category-select" onchange="{fetchTypes(this ,document.querySelector('#type-select'))}">
+        <input class="input-string" name="stuffing" type="text" placeholder="Recheio">
+        <select name="categoria"  id="category-select" onchange="{fetchTypes(this ,document.querySelector('#type-select'))}">
             <option disabled selected value="pizza">Categoria</option>
         </select>
         <select name="type" id="type-select">
             <option disabled selected>Type</option>
         </select>
-        <input class="input-string" type="number" placeholder="Price" step="0.50">
+        <input class="input-string" name="price" type="number" placeholder="Price" step="0.50">
         <ul class="outer-box" style="list-style: none">
             <span class="title_ingredients">Ingredientes</span>
-            <li style="margin-top: 10px;">
+            <li style="margin-top: 10px">
                 <div class="ingredient-box">
                     <input class="ingredient-box" type="checkbox" name="ingredient" id="1" value="Queijo">
                     <label for="1">Queijo</label>
@@ -51,19 +54,23 @@ export const dinamicForm = async (option) => {
             </li>
         </ul>
         <div class="promo-option">
-            <input type="checkbox" name="promo" id="promo-input">
+            <input type="checkbox" name="" id="promo-input">
             <label id="promo-label" for="promo-input">Desconto</label>
         </div>
+        <input name="saleOffValue" type="number" placeholder="%" class="input-string" style="visibility: hidden" value="0">
         `;
 
-    const promoOption = document.querySelector('input[name="promo"]');
+    const promoOption = document.querySelector('input[id="promo-input"]');
     const divToAppend = document.querySelector('.promo-option');
 
     promoOption.addEventListener('click', () => {
+      const input = document.querySelector('input[name="saleOffValue"]');
       if (promoOption.checked) {
-        divToAppend.innerHTML = `
-                <input class="input-string" type="number" placeholder="%">
-                `;
+        input.style.visibility = 'visible';
+        input.value = '';
+      } else {
+        input.style.visibility = 'hidden';
+        input.value = 0;
       }
     });
 
