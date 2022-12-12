@@ -68,21 +68,22 @@ const populateCardapio = (data) => {
 
 const populatePizzasEmPromocao = (data) => {
   data.map((item) => {
+    console.log(item);
     const card = new ItemCard();
-    card.setTitle(item.name);
-    const ingredients = item.tbl_pizza[0].tbl_pizza_ingredient;
+    card.setTitle(item.tbl_product.name);
+    const ingredients = item.tbl_product.tbl_pizza[0].tbl_pizza_ingredient;
 
     let ingredientsNames = [];
 
-    ingredients.forEach((ingredient) =>
+    ingredients.slice(0,1).forEach((ingredient) =>
       ingredientsNames.push(ingredient.tbl_ingredient.name)
     );
 
     card.setIngredients(ingredientsNames.join(" "));
 
-    const { tbl_picture } = item.tbl_product_pictures[0];
+    const { tbl_picture } = item.tbl_product.tbl_product_pictures[0];
 
-    card.setPrice(item.price);
+    card.setPrice(item.tbl_product.price);
     card.setImage(tbl_picture.picture_link);
     card.setId(item.id);
 
