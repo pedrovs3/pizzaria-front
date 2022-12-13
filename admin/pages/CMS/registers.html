@@ -13,59 +13,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script defer src="../../js/utils/register.js" type="module"></script>
     <script>
-			const fetchIngredients = async () => {
-				const { data } = await api.get('/ingredient');
-				console.log(data);
-				const ingredientsDiv = document.querySelector('.outer-box li');
+        const fetchIngredients = async () => {
+            const {data} = await axios.get(`https://pizza-cms-api.netlify.app/.netlify/functions/server/ingredient`, {headers: {common: {Authorization: `Bearer ${localStorage.getItem('access_token')}`}}});
+            console.log(data);
+            const ingredientsDiv = document.querySelector('.outer-box li');
 
-				data.payload.forEach((ingredient) => {
-					const div = document.createElement('div');
-					div.classList.add('ingredient-box');
-					const input = document.createElement('input');
-					input.classList.add('ingredient-box');
-					input.type = 'checkbox';
-					input.name = 'ingredient';
-					input.id = ingredient.id;
-					input.value = ingredient.name;
-					const label = document.createElement('label');
-					label.htmlFor = ingredient.id;
-					label.textContent = ingredient.name;
+            data.payload.forEach((ingredient) => {
+                const div = document.createElement('div');
+                div.classList.add('ingredient-box');
+                const input = document.createElement('input');
+                input.classList.add('ingredient-box');
+                input.type = 'checkbox';
+                input.name = 'ingredient';
+                input.id = ingredient.id;
+                input.value = ingredient.name;
+                const label = document.createElement('label');
+                label.htmlFor = ingredient.id;
+                label.textContent = ingredient.name;
 
-					div.appendChild(input);
-					div.appendChild(label);
-					ingredientsDiv.appendChild(div);
-				});
-			};
+                div.appendChild(input);
+                div.appendChild(label);
+                ingredientsDiv.appendChild(div);
+            });
+        };
 
         const changeIngredientsDiv = async (type) => {
-					const ingredientsDiv = document.querySelector('.outer-box');
-					if (type === 'bebida') {
-											console.log(ingredientsDiv)
-											ingredientsDiv.innerHTML = `<input class="input-string" type="number" step="150" max="2500" min="150" placeholder="Volume (ml)">`
-                    } else {
-						ingredientsDiv.innerHTML = `<span class="title_ingredients">Ingredientes</span>
-                                                        <li style="margin-top: 10px;">
-                                                        <div class="ingredient-box">
-                                                        </div>`;
-											await fetchIngredients();
-                    }
+            const ingredientsDiv = document.querySelector('.outer-box');
+            if (type === 'bebida') {
+                ingredientsDiv.innerHTML = `<input name="volume" class="input-string" type="number" step="150" max="2500" min="150" placeholder="Volume (ml)">`
+            } else {
+                ingredientsDiv.innerHTML = `<span class="title_ingredients">Ingredientes</span>
+                                                        <li style="margin-top: 10px; min-width: 20vw;">
+
+</li>
+                                                        `;
+                await fetchIngredients();
+            }
         }
 
         const fetchTypes = async (categoryInput, divToAppend) => {
+            const inputName_Stuffing = document.querySelector(`input[name="stuffing"]`) || document.querySelector('input[name="name"]');
             try {
-                if(divToAppend.lastElementChild) {
+                if (divToAppend.lastElementChild) {
                     divToAppend.innerHTML = '';
                 }
-
-
-
+                
                 let typeSelected = categoryInput.value.toLowerCase();
-							changeIngredientsDiv(typeSelected);
-                if(typeSelected.includes("bebida")) {
-                  typeSelected = "drink";
-                }
+                changeIngredientsDiv(typeSelected);
 
-                const { data } = await axios.get(`https://pizza-cms-api.netlify.app/.netlify/functions/server/${typeSelected}/types`, {headers: { common:{ Authorization: `Bearer ${localStorage.getItem('access_token')}`}}});
+                inputName_Stuffing.name = 'stuffing';
+                inputName_Stuffing.placeholder = 'Recheio';
+
+                if (typeSelected.includes("bebida")) {
+                    typeSelected = "drink";
+                    inputName_Stuffing.name = 'name';
+                    inputName_Stuffing.placeholder = 'Nome'
+                }
+                const {data} = await axios.get(`https://pizza-cms-api.netlify.app/.netlify/functions/server/${typeSelected}/types`, {headers: {common: {Authorization: `Bearer ${localStorage.getItem('access_token')}`}}});
 
                 data.payload.forEach((type) => {
                     const option = document.createElement('option');
@@ -112,7 +116,7 @@
 
         </form>
     </div>
-    <button class="button_cadastro" type="button" >Cadastrar</button>
+    <button class="button_cadastro" type="button">Cadastrar</button>
 </main>
 </body>
 </html>

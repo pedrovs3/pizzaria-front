@@ -1,7 +1,5 @@
 import { ItemCard } from "./components/ItemCard.js";
-
 import fetchFavoriteProducts from "./utils/fetchFavoriteProducts.js";
-
 import {
   categoryFetch,
   drinkTypesFetch,
@@ -44,16 +42,18 @@ export const populateCardapio = (data) => {
 
     if (item.tbl_pizza) {
       const ingredients = item.tbl_pizza[0].tbl_pizza_ingredient;
-      let ingredientsNames = [];
+      const ingredientsNames = [];
       ingredients.forEach((ingredient) =>
         ingredientsNames.push(ingredient.tbl_ingredient.name)
       );
 
-      card.setIngredients(ingredientsNames.join(" "));
+      card.setIngredients(
+        ingredientsNames.join(", ").replace(/,\s([^,]+)$/, " e $1")
+      );
     } else {
-      const volume = item.tbl_drink[0].volume;
+      const { volume } = item.tbl_drink[0];
 
-      card.setIngredients(volume + " ml");
+      card.setIngredients(`${volume} ml`);
     }
 
     const { tbl_picture } = item.tbl_product_pictures[0];
@@ -73,21 +73,17 @@ export const populateProdutosEmPromocao = (data) => {
     console.log(item);
     const card = new ItemCard();
     card.setTitle(item.tbl_product.name);
+    const ingredients = item.tbl_product.tbl_pizza[0].tbl_pizza_ingredient;
 
-    
-     if (item.tbl_product.tbl_pizza) {
-      const ingredients = item.tbl_product.tbl_pizza[0].tbl_pizza_ingredient;
-      let ingredientsNames = [];
-      ingredients.forEach((ingredient) =>
+    let ingredientsNames = [];
+
+    ingredients
+      .slice(0, 1)
+      .forEach((ingredient) =>
         ingredientsNames.push(ingredient.tbl_ingredient.name)
       );
 
-      card.setIngredients(ingredientsNames.join(" "));
-    } else {
-      const volume = item.tbl_product.tbl_drink[0].volume;
-
-      card.setIngredients(volume + " ml");
-    }
+    card.setIngredients(ingredientsNames.join(" "));
 
     const { tbl_picture } = item.tbl_product.tbl_product_pictures[0];
 
@@ -108,16 +104,16 @@ export const populateProdutosFavoritos = (data) => {
 
     if (item.tbl_pizza) {
       const ingredients = item.tbl_pizza[0].tbl_pizza_ingredient;
-      let ingredientsNames = [];
+      const ingredientsNames = [];
       ingredients.forEach((ingredient) =>
         ingredientsNames.push(ingredient.tbl_ingredient.name)
       );
 
       card.setIngredients(ingredientsNames.join(" "));
     } else {
-      const volume = item.tbl_drink[0].volume;
+      const { volume } = item.tbl_drink[0];
 
-      card.setIngredients(volume + " ml");
+      card.setIngredients(`${volume} ml`);
     }
 
     const { tbl_picture } = item.tbl_product_pictures[0];
@@ -144,14 +140,14 @@ export const clearFilters = () => {
 const populateCategoryFilter = (data) => {
   data.payload.map((item) => {
     const option = document.createElement("option");
-    option.value = item.id;
+    option.value = item.name;
     option.text = item.name;
     categorySelect.appendChild(option);
   });
 };
 
 const populateDrinkTypeFilter = (data) => {
-  selects[1].innerHTML = `<option value="Any" selected>Any</option>`;
+  selects[1].innerHTML = '<option value="Any" selected>Any</option>';
 
   data.payload.map((item) => {
     const option = document.createElement("option");
@@ -162,7 +158,7 @@ const populateDrinkTypeFilter = (data) => {
 };
 
 const populatePizzaTypeFilter = (data) => {
-  selects[1].innerHTML = `<option value="Any" selected>Any</option>`;
+  selects[1].innerHTML = '<option value="Any" selected>Any</option>';
 
   data.payload.map((item) => {
     const option = document.createElement("option");
@@ -173,7 +169,7 @@ const populatePizzaTypeFilter = (data) => {
 };
 
 const populatePizzaStuffingFilter = (data) => {
-  selects[2].innerHTML = `<option value="Any" selected>Any</option>`;
+  selects[2].innerHTML = '<option value="Any" selected>Any</option>';
   data.payload.map((item) => {
     const option = document.createElement("option");
     option.value = item.name;
@@ -185,8 +181,9 @@ const populatePizzaStuffingFilter = (data) => {
 selects[0].addEventListener("change", (e) => {
   const { value } = selects[0];
 
-  
-  if (value == 1) {
+  clearFilters();
+
+  if (value.toLowerCase() === "pizza") {
     populatePizzaTypeFilter(pizzaTypes);
     populatePizzaStuffingFilter(pizzaStuffing);
   } else {

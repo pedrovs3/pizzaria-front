@@ -1,43 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pizzaria Paradiso</title>
-  <link rel="stylesheet" href="./assets/css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="shortcut icon" href="./assets/img/favicon-16x16.png" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
-  <script src="./assets/js/components/ItemCard.js" defer type="module"></script>
-  <script src="https://kit.fontawesome.com/e2a54895da.js" crossorigin="anonymous"></script>
-  <script src="./assets/js/app.js" defer type="module"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-  <script src="./assets/js/form.js" defer type="module"></script>
-  <script src="./assets/js/handleFilters.js" defer type="module"></script>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Pizzaria Paradiso</title>
+    <link href="./assets/css/styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="./assets/img/favicon-16x16.png" rel="shortcut icon" type="image/x-icon">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
+    <script defer src="./assets/js/components/ItemCard.js" type="module"></script>
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/e2a54895da.js"></script>
+    <script defer src="./assets/js/app.js" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script defer src="./assets/js/form.js" type="module"></script>
+    <link href="./assets/css/swal_style.css" rel="stylesheet">
+
 </head>
 <body>
-  <header class="header">
-    <img src="./assets/img/Logo.png" alt="Logo da pizzaria Paradiso">
+<header class="header">
+    <img alt="Logo da pizzaria Paradiso" src="./assets/img/Logo.png">
     <ul class="header__buttons">
-      <li><a href="#" class="header__button">Home</a></li>
-      <li>
-        <a href="#promo" class="header__button">Promoções</a>
-      </li>
-      <li>
-        <a href="#produtos" class="header__button">Produtos</a>
-      </li>
+        <li><a class="header__button" href="#">Home</a></li>
+        <li>
+            <a class="header__button" href="#promo">Promoções</a>
+        </li>
+        <li>
+            <a class="header__button" href="#produtos">Produtos</a>
+        </li>
     </ul>
-  </header>
-  <main>
+</header>
+<main>
     <div class="main-banner">
-      <div class="main-banner__info">
-        <h1 class="info__title">Seja bem vindo à <span class="accent-text">Pizza Paradiso</span></h1>
-        <span class="info__address">Ficamos na <span class="accent-text">Av. Luis Carlos Berrini, nº 666</span></span>
-      </div>
-      <span class="main-banner__description">
+        <div class="main-banner__info">
+            <h1 class="info__title">Seja bem vindo à <span class="accent-text">Pizza Paradiso</span></h1>
+            <span class="info__address">Ficamos na <span
+                    class="accent-text">Av. Luis Carlos Berrini, nº 666</span></span>
+        </div>
+        <span class="main-banner__description">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt non massa id iaculis. Pellentesque velit lacus, auctor ac suscipit in, consequat sed turpis. Ut sollicitudin magna at posuere bibendum. Etiam in odio enim. Sed ultrices risus non blandit semper. Sed at velit volutpat, mollis lacus vitae, pretium risus. Duis hendrerit ante vitae cursus tempor.
       </span>
     </div>
@@ -47,125 +49,126 @@
       <ul class="outer-box">
         <li>
 
-        </li>
-      </ul>
+            </li>
+        </ul>
     </section>
-    <img class="divider" src="./assets/img/Divider.svg" alt="divider">
+    <img alt="divider" class="divider" src="./assets/img/Divider.svg">
     <section class="section-fav">
-      <h2 class="section-fav__title">Favoritas</h2>
-      <ul class="outer-box">
-        <li>
-<!--          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>-->
-<!--          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>-->
-<!--          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>-->
-        </li>
-      </ul>
+        <h2 class="section-fav__title">Favoritas</h2>
+        <ul class="outer-box">
+            <li>
+                <!--          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>-->
+                <!--          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>-->
+                <!--          <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card>-->
+            </li>
+        </ul>
     </section>
-    <section id="produtos" class="section-foods">
-      <h2 class="underline-accent">Cardápio</h2>
+    <section class="section-foods" id="produtos">
+        <h2 class="underline-accent">Cardápio</h2>
 
-      <ul class="outer-box filters-list">
-        <li class="select-input">
-          <span class="select-input__title">Categoria</span>
-          <select class="select-input__option" id="category-filter">
-            <option value="Any" selected>Any</option>
-          </select>
-        </li>
-        <li class="select-input">
-          <span class="select-input__title">Tipo</span>
-          <select class="select-input__option">
-            <option value="Any" selected>Any</option>
-          </select>
-        </li>
-        <li class="select-input">
-          <span class="select-input__title">Tipo</span>
-          <select class="select-input__option">
-            <option value="Any" selected>Any</option>
-          </select>
-        </li>
-        <!-- <li class="select-input">
-        <span class="select-input__title">Tipo</span>
-        <select class="select-input__option">
-          <option value="Any" selected>Any</option>
-          <option value="Bebida">Bebida</option>
-          <option value="Pizza">Pizza</option>
-        </select>
-      </li> -->
-      </ul>
+        <ul class="outer-box filters-list">
+            <li class="select-input">
+                <span class="select-input__title">Categoria</span>
+                <select class="select-input__option" id="category-filter">
+                    <option selected value="Any">Any</option>
+                </select>
+            </li>
+            <li class="select-input">
+                <span class="select-input__title">Tipo</span>
+                <select class="select-input__option">
+                    <option selected value="Any">Any</option>
+                </select>
+            </li>
+            <li class="select-input">
+                <span class="select-input__title">Tipo</span>
+                <select class="select-input__option">
+                    <option selected value="Any">Any</option>
+                </select>
+            </li>
+            <!-- <li class="select-input">
+            <span class="select-input__title">Tipo</span>
+            <select class="select-input__option">
+              <option value="Any" selected>Any</option>
+              <option value="Bebida">Bebida</option>
+              <option value="Pizza">Pizza</option>
+            </select>
+          </li> -->
+        </ul>
 
-      <div class="grid-foods">
-        <item-card ingredients="350 ml" title="Coca-Cola" price="7.99" id="59" image="https://storage.googleapis.com/senai-pizzaria.appspot.com/1669984377362.jpeg"></item-card>
-      </div>
+        <div class="grid-foods">
+            <item-card id="59" image="https://storage.googleapis.com/senai-pizzaria.appspot.com/1669984377362.jpeg" ingredients="350 ml" price="7.99"
+                       title="Coca-Cola"></item-card>
+        </div>
     </section>
 
-    <img class="divider" src="./assets/img/Divider.svg" alt="divider">
+    <img alt="divider" class="divider" src="./assets/img/Divider.svg">
 
     <section class="services">
-      <h2>O que oferecemos?</h2>
-      <div class="services__cards-container">
-        <div class="services__card">
-          <i class="fa-solid fa-truck"></i>
-          <span>Delivery</span>
+        <h2>O que oferecemos?</h2>
+        <div class="services__cards-container">
+            <div class="services__card">
+                <i class="fa-solid fa-truck"></i>
+                <span>Delivery</span>
+            </div>
+            <div class="services__card">
+                <i class="fa-solid fa-truck"></i>
+                <span>Delivery</span>
+            </div>
+            <div class="services__card">
+                <i class="fa-solid fa-truck"></i>
+                <span>Delivery</span>
+            </div>
         </div>
-        <div class="services__card">
-          <i class="fa-solid fa-truck"></i>
-          <span>Delivery</span>
-        </div>
-        <div class="services__card">
-          <i class="fa-solid fa-truck"></i>
-          <span>Delivery</span>
-        </div>
-      </div>
     </section>
 
-    <img class="divider" src="./assets/img/Divider.svg" alt="divider">
+    <img alt="divider" class="divider" src="./assets/img/Divider.svg">
 
     <section>
-      <h2>Fale com a gente!</h2>
-      <form class="contact-form">
-        <input type="text" id="name-input" placeholder="Nome">
-        <!-- <input type="tel" id="phone-input" placeholder="Telefone"> -->
-        <input type="tel" id="cell-input" placeholder="Celular">
-        <input type="email" id="mail-input" placeholder="E-mail">
-        <div class="contact-form__option">
-          <label>
-            Sugestão
-            <input type="radio" value="Sugestao" name="group">
-          </label>
-          <label>
-            Crítica
-            <input type="radio" value="Critica" name="group">
-          </label>
-        </div>
-        <textarea name="mensagem" id="message" cols="30" rows="10" placeholder="Mensagem"></textarea>
-        <button class="contact-form__submit" type="submit">Enviar mensagem</button>
-      </form>
+        <h2>Fale com a gente!</h2>
+        <form class="contact-form">
+            <input id="name-input" placeholder="Nome" type="text">
+            <!-- <input type="tel" id="phone-input" placeholder="Telefone"> -->
+            <input id="cell-input" placeholder="Celular" type="tel">
+            <input id="mail-input" placeholder="E-mail" type="email">
+            <div class="contact-form__option">
+                <label>
+                    Sugestão
+                    <input name="group" type="radio" value="Sugestao">
+                </label>
+                <label>
+                    Crítica
+                    <input name="group" type="radio" value="Critica">
+                </label>
+            </div>
+            <textarea cols="30" id="message" name="mensagem" placeholder="Mensagem" rows="10"></textarea>
+            <button class="contact-form__submit" type="submit">Enviar mensagem</button>
+        </form>
     </section>
-  </main>
-  <footer>
+</main>
+<footer>
     <div class="container-footer">
-      <span></span>
-      <span>Pedro V | Guilherme J</span>
-      <ul class="container-footer__social-container">
-        <li>
-          <a class="social-container__button" href="#">
-            <i class="fa-brands fa-youtube"></i>
-          </a>
-        </li>
-        <li>
-          <a class="social-container__button" href="#">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-        </li>
-        <li>
-          <a class="social-container__button" href="#">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-        </li>
-      </ul>
+        <span></span>
+        <span>Pedro V | Guilherme J</span>
+        <ul class="container-footer__social-container">
+            <li>
+                <a class="social-container__button" href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-container__button" href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </li>
+            <li>
+                <a class="social-container__button" href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            </li>
+        </ul>
     </div>
 
-  </footer>
-  <!-- <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card> -->
+</footer>
+<!-- <item-card title="mussarela" ingredients="Queijo e orégano." price="30,99"></item-card> -->
 </body>
 </html>
