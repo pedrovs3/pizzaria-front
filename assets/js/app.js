@@ -127,8 +127,7 @@ export const populateProdutosEmPromocao = (data) => {
 
     card.setPrice(item.tbl_product.price);
     card.setImage(tbl_picture.picture_link);
-    card.setId(item.id);
-
+    card.setId(item.tbl_product.id);
     card.connectedCallback();
 
     pizzasPromocao.append(card.shadow);

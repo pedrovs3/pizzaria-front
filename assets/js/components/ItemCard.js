@@ -35,6 +35,7 @@ class ItemCard {
     const clickStatus = e.target.classList.toggle('liked_button');
     if (clickStatus) await like(id);
     else await deslike(id);
+    console.log("liked!");
   }
 
   connectedCallback() {
