@@ -1,24 +1,8 @@
-import { api } from '../../api/api.js';
+import { fetchCategory } from './utils/fetchCategory.js';
 import { fetchTypes } from './utils/register.js';
 
 const form = document.querySelector('fieldset');
 // const buttonSendFormData = document.querySelector('.button_cadastro');
-
-const fetchCategory = async (divToAppend) => {
-  try {
-    const { data } = await api.get('/category');
-
-    data.payload.forEach((type) => {
-      const option = document.createElement('option');
-      option.value = type.name;
-      option.textContent = type.name;
-
-      divToAppend.appendChild(option);
-    });
-  } catch (e) {
-    console.log('Ops! Houve um erro!', e);
-  }
-};
 
 export const dinamicForm = async (option) => {
   const fileIcon = document.querySelector('.file');
@@ -80,7 +64,5 @@ export const dinamicForm = async (option) => {
 
     const category = document.querySelector('#category-select');
     await fetchCategory(category);
-
-    // buttonSendFormData.addEventListener('click', handleClick(e));
   }
 };

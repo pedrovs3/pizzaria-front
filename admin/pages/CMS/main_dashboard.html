@@ -14,6 +14,33 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="../../js/products.js" type="module"></script>
     <script defer src="../../js/statistics.js" type="module"></script>
+    <script>
+        const handleEdit = () => {
+            const spanDesc = document.querySelector('.text-desc');
+            spanDesc.classList.toggle('not-visible')
+            document.addEventListener('click', (e) => {
+                document.querySelectorAll('.table-products__product-row').forEach((tr) => {
+                    tr.style.cursor = 'pointer';
+                });
+                console.log(e.target.parentElement.tagName);
+                if (e.target.parentElement.tagName === 'TR') {
+                    localStorage.setItem('id_product', e.target.parentElement.id);
+                    location.href = './update.html';
+                }
+            })
+            if (state === true) {
+                document.removeEventListener('click', () => {
+                    document.querySelectorAll('.table-products__product-row').forEach((tr) => {
+                        tr.style.cursor = 'pointer';
+                    })
+                    console.log(e.target.parentElement.tagName);
+                    if (e.target.parentElement.tagName === 'TR') {
+                        localStorage.setItem('id_product', e.target.parentElement.id);
+                    }
+                });
+            }
+        }
+    </script>
 </head>
 <body>
 <header class="dash-header">
@@ -27,10 +54,14 @@
             <div class="main-container__menu">
                 <ul>
                     <li>
+                        <a onclick="handleEdit()"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </li>
+                    <li>
                         <a href="registers.html"><i class="fa-solid fa-plus"></i></a>
                     </li>
                 </ul>
             </div>
+            <span class="text-desc not-visible">Clique em algum produto para modifica-lo!</span>
             <table class="table-products">
                 <thead>
                 <tr class="table-products__titles-row">
@@ -49,7 +80,6 @@
         <div class="grid-content__infos-container">
             <span class="grid-content__title">Estatísticas</span>
             <div class="grid-content__insights-container">
-               
             </div>
         </div>
     </div>

@@ -16,6 +16,7 @@ const createRowsCards = async () => {
 
   await Promise.all(data.map(async (product) => {
     const tr = document.createElement('tr');
+    tr.id = product.id;
     tr.classList.add('table-products__product-row');
 
     const categoryTh = document.createElement('th');
@@ -37,7 +38,7 @@ const createRowsCards = async () => {
     img.src = product?.tbl_product_pictures[0].tbl_picture.picture_link;
 
     const priceTh = document.createElement('th');
-    priceTh.textContent = product.price.replace('.', ',');
+    priceTh.textContent = `R$ ${product.price.replace('.', ',')}`;
 
     const ingredientTh = document.createElement('th');
     if (categoryTh.textContent === 'Bebida') {
