@@ -45,7 +45,7 @@ export const populateCardapio = (data) => {
         ingredients.forEach((ingredient) => ingredientsNames.push(ingredient.tbl_ingredient.name));
 
         card.setIngredients(
-          ingredientsNames.join(', ').replace(/,\s([^,]+)$/, ' e $1'),
+          ingredientsNames.slice(0,2).join(', ').replace(/,\s([^,]+)$/, ' e $1'),
         );
       } else {
         const { volume } = item;
@@ -74,7 +74,7 @@ export const populateCardapio = (data) => {
         ingredients.forEach((ingredient) => ingredientsNames.push(ingredient.tbl_ingredient.name));
 
         card.setIngredients(
-          ingredientsNames.join(', ').replace(/,\s([^,]+)$/, ' e $1'),
+          ingredientsNames.slice(0,2).join(', ').replace(/,\s([^,]+)$/, ' e $1'),
         );
       } else {
         const { volume } = item.tbl_drink[0];
@@ -106,7 +106,7 @@ export const populateProdutosEmPromocao = (data) => {
       ingredients.forEach((ingredient) => ingredientsNames.push(ingredient.tbl_ingredient.name));
 
       card.setIngredients(
-        ingredientsNames.join(', ').replace(/,\s([^,]+)$/, ' e $1'),
+        ingredientsNames.slice(0,2).join(', ').replace(/,\s([^,]+)$/, ' e $1'),
       );
     } else {
       const { volume } = item.tbl_product.tbl_drink[0];
@@ -135,7 +135,7 @@ export const populateProdutosFavoritos = (data) => {
       const ingredientsNames = [];
       ingredients.forEach((ingredient) => ingredientsNames.push(ingredient.tbl_ingredient.name));
 
-      card.setIngredients(ingredientsNames.join(', ').replace(/,\s([^,]+)$/, ' e $1'));
+      card.setIngredients(ingredientsNames.slice(0,2).join(', ').replace(/,\s([^,]+)$/, ' e $1'));
     } else {
       const { volume } = item.tbl_drink[0];
 

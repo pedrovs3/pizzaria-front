@@ -24,7 +24,9 @@ const createRowsCards = async () => {
     const typeTh = document.createElement('th');
     if (categoryTh.textContent === 'Bebida') {
       typeTh.textContent = product.tbl_drink[0].tbl_drink_type.name;
-    } else if (categoryTh.textContent === 'Pizza') typeTh.textContent = product.tbl_pizza[0].tbl_pizza_type.name;
+    } else {
+      typeTh.textContent = product.tbl_pizza[0].tbl_pizza_type.name;
+    }
 
     const nameTh = document.createElement('th');
     nameTh.textContent = product.name;
@@ -40,7 +42,9 @@ const createRowsCards = async () => {
     const ingredientTh = document.createElement('th');
     if (categoryTh.textContent === 'Bebida') {
       ingredientTh.textContent = `${product.tbl_drink[0].volume}ml`;
-    } else if (categoryTh.textContent === 'Pizza') ingredientTh.textContent = product?.tbl_pizza[0].tbl_pizza_ingredient.map((ingredient) => ingredient.tbl_ingredient.name).join(',');
+    } else {
+      ingredientTh.textContent = product?.tbl_pizza[0].tbl_pizza_ingredient.map((ingredient) => ingredient.tbl_ingredient.name).join(',');
+    }
 
     fotoTh.appendChild(img);
 
