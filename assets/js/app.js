@@ -1,5 +1,7 @@
 import { ItemCard } from "./components/ItemCard.js";
+
 import fetchFavoriteProducts from "./utils/fetchFavoriteProducts.js";
+
 import {
   categoryFetch,
   drinkTypesFetch,
@@ -35,7 +37,7 @@ const drinkTypes = await drinkTypesFetch();
 const pizzaTypes = await pizzaTypesFetch();
 const pizzaStuffing = await pizzaStuffingFetch();
 
-const populateCardapio = (data) => {
+export const populateCardapio = (data) => {
   data.map((item) => {
     const card = new ItemCard();
     card.setTitle(item.name);
@@ -66,20 +68,26 @@ const populateCardapio = (data) => {
   });
 };
 
-const populatePizzasEmPromocao = (data) => {
+export const populateProdutosEmPromocao = (data) => {
   data.map((item) => {
     console.log(item);
     const card = new ItemCard();
     card.setTitle(item.tbl_product.name);
-    const ingredients = item.tbl_product.tbl_pizza[0].tbl_pizza_ingredient;
 
-    let ingredientsNames = [];
+    
+     if (item.tbl_product.tbl_pizza) {
+      const ingredients = item.tbl_product.tbl_pizza[0].tbl_pizza_ingredient;
+      let ingredientsNames = [];
+      ingredients.forEach((ingredient) =>
+        ingredientsNames.push(ingredient.tbl_ingredient.name)
+      );
 
-    ingredients.slice(0,1).forEach((ingredient) =>
-      ingredientsNames.push(ingredient.tbl_ingredient.name)
-    );
+      card.setIngredients(ingredientsNames.join(" "));
+    } else {
+      const volume = item.tbl_product.tbl_drink[0].volume;
 
-    card.setIngredients(ingredientsNames.join(" "));
+      card.setIngredients(volume + " ml");
+    }
 
     const { tbl_picture } = item.tbl_product.tbl_product_pictures[0];
 
@@ -93,7 +101,7 @@ const populatePizzasEmPromocao = (data) => {
   });
 };
 
-const populateProdutosFavoritos = (data) => {
+export const populateProdutosFavoritos = (data) => {
   data.map((item) => {
     const card = new ItemCard();
     card.setTitle(item.name);
@@ -124,7 +132,7 @@ const populateProdutosFavoritos = (data) => {
   });
 };
 
-const clearFilters = () => {
+export const clearFilters = () => {
   while (selects[1].lastElementChild) {
     selects[1].remove(selects[1].lastElementChild);
   }
@@ -136,7 +144,7 @@ const clearFilters = () => {
 const populateCategoryFilter = (data) => {
   data.payload.map((item) => {
     const option = document.createElement("option");
-    option.value = item.name;
+    option.value = item.id;
     option.text = item.name;
     categorySelect.appendChild(option);
   });
@@ -177,9 +185,8 @@ const populatePizzaStuffingFilter = (data) => {
 selects[0].addEventListener("change", (e) => {
   const { value } = selects[0];
 
-  clearFilters();
-
-  if (value.toLowerCase() === "pizza") {
+  
+  if (value == 1) {
     populatePizzaTypeFilter(pizzaTypes);
     populatePizzaStuffingFilter(pizzaStuffing);
   } else {
@@ -188,6 +195,6 @@ selects[0].addEventListener("change", (e) => {
 });
 
 populateCardapio(products);
-populatePizzasEmPromocao(pizzasInSaleOf);
+populateProdutosEmPromocao(pizzasInSaleOf);
 populateProdutosFavoritos(mostLikedProducts);
 populateCategoryFilter(categories);
