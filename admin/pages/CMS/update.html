@@ -96,6 +96,15 @@
                 console.log(e);
             }
         }
+
+        const handleUpdate = () => {
+          const form = document.querySelector('form');
+          const getFormData = () => new FormData(form);
+            const formData = getFormData();
+            for (const pair of formData.entries()) { // notation: How to verify an FormData in console.
+                console.log(`${pair[0]}, ${pair[1]}`);
+            }
+        }
     </script>
 </head>
 <body>
@@ -140,8 +149,8 @@
     </div>
 </main>
 
-<footer>
-
+<footer style="display: flex; align-items:center; justify-content: center;">
+    <button class="button_cadastro" type="button" onclick="handleUpdate()">Atualizar</button>
 </footer>
 
 </body>

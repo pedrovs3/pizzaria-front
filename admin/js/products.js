@@ -17,7 +17,7 @@ const createRowsCards = async () => {
   await Promise.all(data.map(async (product) => {
     const tr = document.createElement('tr');
     tr.id = product.id;
-    tr.setAttribute('id-product-type', product?.tbl_pizza[0].id);
+
     tr.classList.add('table-products__product-row');
 
     const categoryTh = document.createElement('th');
@@ -26,8 +26,10 @@ const createRowsCards = async () => {
     const typeTh = document.createElement('th');
     if (categoryTh.textContent === 'Bebida') {
       typeTh.textContent = product.tbl_drink[0].tbl_drink_type.name;
+      tr.setAttribute('id-product-type', product?.tbl_drink[0].id);
     } else {
       typeTh.textContent = product.tbl_pizza[0].tbl_pizza_type.name;
+      tr.setAttribute('id-product-type', product?.tbl_pizza[0].id);
     }
 
     const nameTh = document.createElement('th');
