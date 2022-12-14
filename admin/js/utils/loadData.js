@@ -43,3 +43,4 @@ export const loadData = async (idProduct, idProductType) => {
   const dataCategoria = await api.get(`/category/${idCategoria}`);
   categoryInput.value = dataCategoria.data.payload[0].name;
 };
+

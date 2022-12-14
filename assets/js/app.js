@@ -1,25 +1,29 @@
-import { ItemCard } from './components/ItemCard.js';
-import fetchFavoriteProducts from './utils/fetchFavoriteProducts.js';
+import "./menu.js";
+import { ItemCard } from "./components/ItemCard.js";
+import fetchFavoriteProducts from "./utils/fetchFavoriteProducts.js";
 import {
-  categoryFetch, drinkTypesFetch, pizzaStuffingFetch, pizzaTypesFetch,
-} from './utils/fetchFilters.js';
-import fetchPizzaInSaleOff from './utils/fetchPizzaInSaleOff.js';
-import fetchProducts from './utils/fetchProducts.js';
+  categoryFetch,
+  drinkTypesFetch,
+  pizzaStuffingFetch,
+  pizzaTypesFetch,
+} from "./utils/fetchFilters.js";
+import fetchPizzaInSaleOff from "./utils/fetchPizzaInSaleOff.js";
+import fetchProducts from "./utils/fetchProducts.js";
 
-const cardapio = document.querySelector('.grid-foods');
+const cardapio = document.querySelector(".grid-foods");
 
 const pizzasPromocao = document
-  .querySelector('.promo-section')
-  .querySelector('.outer-box')
-  .querySelector('li');
+  .querySelector(".promo-section")
+  .querySelector(".outer-box")
+  .querySelector("li");
 
 const produtosFavoritos = document
-  .querySelector('.section-fav')
-  .querySelector('.outer-box')
-  .querySelector('li');
+  .querySelector(".section-fav")
+  .querySelector(".outer-box")
+  .querySelector("li");
 
-const categorySelect = document.querySelector('#category-filter');
-const selects = document.querySelectorAll('.select-input__option');
+const categorySelect = document.querySelector("#category-filter");
+const selects = document.querySelectorAll(".select-input__option");
 
 // fetchs
 const products = await fetchProducts();
@@ -42,10 +46,15 @@ export const populateCardapio = (data) => {
       if (item.tbl_pizza_ingredient) {
         const ingredients = item.tbl_pizza_ingredient;
         const ingredientsNames = [];
-        ingredients.forEach((ingredient) => ingredientsNames.push(ingredient.tbl_ingredient.name));
+        ingredients.forEach((ingredient) =>
+          ingredientsNames.push(ingredient.tbl_ingredient.name)
+        );
 
         card.setIngredients(
-          ingredientsNames.slice(0,2).join(', ').replace(/,\s([^,]+)$/, ' e $1'),
+          ingredientsNames
+            .slice(0, 2)
+            .join(", ")
+            .replace(/,\s([^,]+)$/, " e $1")
         );
       } else {
         const { volume } = item;
@@ -71,10 +80,15 @@ export const populateCardapio = (data) => {
       if (item.tbl_pizza) {
         const ingredients = item.tbl_pizza[0].tbl_pizza_ingredient;
         const ingredientsNames = [];
-        ingredients.forEach((ingredient) => ingredientsNames.push(ingredient.tbl_ingredient.name));
+        ingredients.forEach((ingredient) =>
+          ingredientsNames.push(ingredient.tbl_ingredient.name)
+        );
 
         card.setIngredients(
-          ingredientsNames.slice(0,2).join(', ').replace(/,\s([^,]+)$/, ' e $1'),
+          ingredientsNames
+            .slice(0, 2)
+            .join(", ")
+            .replace(/,\s([^,]+)$/, " e $1")
         );
       } else {
         const { volume } = item.tbl_drink[0];
@@ -103,10 +117,15 @@ export const populateProdutosEmPromocao = (data) => {
     if (item.tbl_product.tbl_pizza) {
       const ingredients = item.tbl_product.tbl_pizza[0].tbl_pizza_ingredient;
       const ingredientsNames = [];
-      ingredients.forEach((ingredient) => ingredientsNames.push(ingredient.tbl_ingredient.name));
+      ingredients.forEach((ingredient) =>
+        ingredientsNames.push(ingredient.tbl_ingredient.name)
+      );
 
       card.setIngredients(
-        ingredientsNames.slice(0,2).join(', ').replace(/,\s([^,]+)$/, ' e $1'),
+        ingredientsNames
+          .slice(0, 2)
+          .join(", ")
+          .replace(/,\s([^,]+)$/, " e $1")
       );
     } else {
       const { volume } = item.tbl_product.tbl_drink[0];
@@ -133,9 +152,16 @@ export const populateProdutosFavoritos = (data) => {
     if (item.tbl_pizza) {
       const ingredients = item.tbl_pizza[0].tbl_pizza_ingredient;
       const ingredientsNames = [];
-      ingredients.forEach((ingredient) => ingredientsNames.push(ingredient.tbl_ingredient.name));
+      ingredients.forEach((ingredient) =>
+        ingredientsNames.push(ingredient.tbl_ingredient.name)
+      );
 
-      card.setIngredients(ingredientsNames.slice(0,2).join(', ').replace(/,\s([^,]+)$/, ' e $1'));
+      card.setIngredients(
+        ingredientsNames
+          .slice(0, 2)
+          .join(", ")
+          .replace(/,\s([^,]+)$/, " e $1")
+      );
     } else {
       const { volume } = item.tbl_drink[0];
 
@@ -165,7 +191,7 @@ export const clearFilters = () => {
 
 const populateCategoryFilter = (data) => {
   data.payload.map((item) => {
-    const option = document.createElement('option');
+    const option = document.createElement("option");
     option.value = item.id;
     option.text = item.name;
     categorySelect.appendChild(option);
@@ -176,7 +202,7 @@ const populateDrinkTypeFilter = (data) => {
   selects[1].innerHTML = '<option value="Any" selected>Any</option>';
 
   data.payload.map((item) => {
-    const option = document.createElement('option');
+    const option = document.createElement("option");
     option.value = item.name;
     option.text = item.name;
     selects[1].append(option);
@@ -187,7 +213,7 @@ const populatePizzaTypeFilter = (data) => {
   selects[1].innerHTML = '<option value="Any" selected>Any</option>';
 
   data.payload.map((item) => {
-    const option = document.createElement('option');
+    const option = document.createElement("option");
     option.value = item.name;
     option.text = item.name;
     selects[1].append(option);
@@ -197,14 +223,14 @@ const populatePizzaTypeFilter = (data) => {
 const populatePizzaStuffingFilter = (data) => {
   selects[2].innerHTML = '<option value="Any" selected>Any</option>';
   data.payload.map((item) => {
-    const option = document.createElement('option');
+    const option = document.createElement("option");
     option.value = item.name;
     option.text = item.name;
     selects[2].append(option);
   });
 };
 
-selects[0].addEventListener('change', (e) => {
+selects[0].addEventListener("change", (e) => {
   const { value } = selects[0];
 
   clearFilters();
