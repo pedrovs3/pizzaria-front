@@ -17,7 +17,8 @@
         // noinspection ES6UnusedImports
         // import {fetchTypes} from "../../js/utils/fetchTypes.js"; NAO FUNCIONANDO
         const idProduct = localStorage.getItem('id_product')
-        await loadData(idProduct)
+        const idProductType = localStorage.getItem('id_product_type')
+        await loadData(idProduct, idProductType);
 
         const category = document.querySelector('#category-select');
         await fetchCategory(category);

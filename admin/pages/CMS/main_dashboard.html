@@ -25,20 +25,10 @@
                 console.log(e.target.parentElement.tagName);
                 if (e.target.parentElement.tagName === 'TR') {
                     localStorage.setItem('id_product', e.target.parentElement.id);
+                    localStorage.setItem('id_product_type', e.target.parentElement.getAttribute('id-product-type'))
                     location.href = './update.html';
                 }
             })
-            if (state === true) {
-                document.removeEventListener('click', () => {
-                    document.querySelectorAll('.table-products__product-row').forEach((tr) => {
-                        tr.style.cursor = 'pointer';
-                    })
-                    console.log(e.target.parentElement.tagName);
-                    if (e.target.parentElement.tagName === 'TR') {
-                        localStorage.setItem('id_product', e.target.parentElement.id);
-                    }
-                });
-            }
         }
     </script>
 </head>
