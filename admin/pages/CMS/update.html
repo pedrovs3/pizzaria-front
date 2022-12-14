@@ -1,17 +1,31 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta charset="UTF-8">
-    <title>Pizza Paradiso - CMS</title>
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>CMS - Pizzaria Paradiso</title>
 
-    <script crossorigin="anonymous" src="https://kit.fontawesome.com/e2a54895da.js"></script>
     <link href="../../assets/css/register_styles/styles.css" rel="stylesheet">
+    <link href="../../assets/css/update_styles/update.css" rel="stylesheet">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script defer src="../../js/utils/register.js" type="module"></script>
+
+    <script defer type="module">
+        import {fetchCategory} from "../../js/utils/fetchCategory.js";
+        import {loadData} from "../../js/utils/loadData.js";
+        // noinspection ES6UnusedImports
+        // import {fetchTypes} from "../../js/utils/fetchTypes.js"; NAO FUNCIONANDO
+        const idProduct = localStorage.getItem('id_product')
+        const idProductType = localStorage.getItem('id_product_type')
+        await loadData(idProduct, idProductType);
+
+        const category = document.querySelector('#category-select');
+        await fetchCategory(category);
+
+
+    </script>
+
     <script>
         const fetchIngredients = async () => {
             const {data} = await axios.get(`https://pizza-cms-api.netlify.app/.netlify/functions/server/ingredient`, {headers: {common: {Authorization: `Bearer ${localStorage.getItem('access_token')}`}}});
@@ -45,7 +59,7 @@
                 ingredientsDiv.innerHTML = `<span class="title_ingredients">Ingredientes</span>
                                                         <li style="margin-top: 10px; min-width: 20vw;">
 
-</li>
+                                                        </li>
                                                         `;
                 await fetchIngredients();
             }
@@ -57,7 +71,7 @@
                 if (divToAppend.lastElementChild) {
                     divToAppend.innerHTML = '';
                 }
-                
+
                 let typeSelected = categoryInput.value.toLowerCase();
                 changeIngredientsDiv(typeSelected);
 
@@ -81,33 +95,41 @@
             } catch (e) {
                 console.log(e);
             }
-        };
-
+        }
     </script>
 </head>
 <body>
-<header class="header">
-    <img alt="logo da empresa" src="../../../assets/img/Logo.png">
+<header>
+    <button class="button_return" onclick="history.back()">Voltar</button>
 </header>
+
 <main>
-    <div class="main__menu-select">
-        <div class="user">
-            <input checked id="new_user_option" name="option" type="radio" value="new_user"/>
-            <label for="new_user_option">Usuário</label>
-        </div>
-        <span class="line"></span>
-        <div class="product">
-            <input id="new_product_option" name="option" type="radio" value="new_product"/>
-            <label for="new_product_option">Produto</label>
-        </div>
-    </div>
     <div class="main__form">
         <form class="main__form__form" method="POST">
             <fieldset>
-                <input class="input-string" name="name" placeholder="Name" type="text">
-                <input class="input-string" name="email" placeholder="E-mail" type="email">
-                <input class="input-string" name="cellphone" placeholder="Telefone" type="tel">
-                <input class="input-string" name="password" placeholder="Password" type="password">
+                <input class="input-string" name="stuffing" placeholder="Recheio" type="text">
+                <select id="category-select" name="categoria"
+                        onchange="{fetchTypes(this ,document.querySelector('#type-select'))}">
+                    <option disabled selected value="pizza">Categoria</option>
+                </select>
+                <select id="type-select" name="type">
+                    <option disabled selected>Type</option>
+                </select>
+                <input class="input-string" name="price" placeholder="Price" step="0.50" type="number">
+                <ul class="outer-box" style="list-style: none">
+                    <span class="title_ingredients">Ingredientes</span>
+                    <li style="margin-top: 10px">
+                        <div class="ingredient-box">
+                        </div>
+
+                    </li>
+                </ul>
+                <div class="promo-option">
+                    <input id="promo-input" name="" type="checkbox">
+                    <label for="promo-input" id="promo-label">Desconto</label>
+                </div>
+                <input class="input-string" name="saleOffValue" placeholder="%" style="visibility: hidden" type="number"
+                       value="0">
             </fieldset>
             <label class="file" for="imagem">
                 <i class="fa-regular fa-user"></i>
@@ -116,7 +138,11 @@
 
         </form>
     </div>
-    <button class="button_cadastro" type="button">Cadastrar</button>
 </main>
+
+<footer>
+
+</footer>
+
 </body>
 </html>

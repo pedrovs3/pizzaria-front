@@ -1,13 +1,13 @@
-import { deslike, like } from "../utils/likeUtil.js";
+import { deslike, like } from '../utils/likeUtil.js';
 
 class ItemCard {
   constructor() {
-    this.shadow = document.createElement("div");
-    this.imageURL = "";
-    this.title = "";
-    this.ingredients = "";
-    this.price = "";
-    this.id = "";
+    this.shadow = document.createElement('div');
+    this.imageURL = '';
+    this.title = '';
+    this.ingredients = '';
+    this.price = '';
+    this.id = '';
   }
 
   setIngredients(value) {
@@ -32,9 +32,10 @@ class ItemCard {
 
   async handleButton(e) {
     const { id } = e.target;
-    const clickStatus = e.target.classList.toggle("liked_button");
-    if (clickStatus)  await like(id);
+    const clickStatus = e.target.classList.toggle('liked_button');
+    if (clickStatus) await like(id);
     else await deslike(id);
+    console.log("liked!");
   }
 
   connectedCallback() {
@@ -43,40 +44,40 @@ class ItemCard {
   }
 
   component() {
-    const card = document.createElement("div");
-    card.classList.add("item-card");
+    const card = document.createElement('div');
+    card.classList.add('item-card');
 
-    const img = document.createElement("img");
-    img.classList.add("item-card__img");
-    img.setAttribute("src", this.imageURL);
+    const img = document.createElement('img');
+    img.classList.add('item-card__img');
+    img.setAttribute('src', this.imageURL);
 
-    const content = document.createElement("div");
-    content.classList.add("item-card__text-content");
+    const content = document.createElement('div');
+    content.classList.add('item-card__text-content');
 
-    const infoDiv = document.createElement("div");
-    infoDiv.classList.add("item-card__info");
+    const infoDiv = document.createElement('div');
+    infoDiv.classList.add('item-card__info');
 
-    const title = document.createElement("h3");
-    title.classList.add("item-card__title");
+    const title = document.createElement('h3');
+    title.classList.add('item-card__title');
     title.textContent = this.title;
 
-    const ingredients = document.createElement("span");
-    ingredients.classList.add("item-card__ingredients");
-    ingredients.textContent = this.ingredients;
+    const ingredients = document.createElement('span');
+    ingredients.classList.add('item-card__ingredients');
+    ingredients.textContent = `${this.ingredients}`;
 
-    const price = document.createElement("div");
-    price.classList.add("item-card__price");
+    const price = document.createElement('div');
+    price.classList.add('item-card__price');
 
-    price.innerHTML = `R$${this.price.split(".")[0]},<span class="cents">${
-      this.price.split(".")[1]
+    price.innerHTML = `R$${this.price.split('.')[0]},<span class="cents">${
+      this.price.split('.')[1]
     }</span>`;
 
-    const likeButton = document.createElement("button");
+    const likeButton = document.createElement('button');
     likeButton.id = this.id;
-    likeButton.classList.add("item-card__likeButton");
+    likeButton.classList.add('item-card__likeButton');
     likeButton.onclick = this.handleButton;
 
-    const infoGroup = document.createElement("div");
+    const infoGroup = document.createElement('div');
 
     infoGroup.appendChild(title);
     infoGroup.appendChild(ingredients);
@@ -92,8 +93,9 @@ class ItemCard {
     return card;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   styles() {
-    const styles = document.createElement("style");
+    const styles = document.createElement('style');
     styles.textContent = `
       .item-card {
         position: relative;
@@ -102,9 +104,8 @@ class ItemCard {
         align-items: center;
         justify-content: space-between;
         padding: 10px 20px;
-        width: 100%;
-        max-width: 250px;
-        min-height: 300px;
+        width: 250px;
+        height: 350px;
         color: white;
         background-color: #3A3A3C;
         text-align: left;

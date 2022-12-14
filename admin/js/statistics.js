@@ -30,6 +30,11 @@ const pizzasCountFetch = async () => {
   return data.count;
 };
 
-createInfoCard("Users", await usersCountFetch());
-createInfoCard("Pizzas", await pizzasCountFetch());
+const drinksCountFetch = async () => {
+  const { data } = await api.get('/drink/count');
+  return data.count;
+};
 
+createInfoCard('Users', await usersCountFetch());
+createInfoCard('Pizzas', await pizzasCountFetch());
+createInfoCard('Bebidas', await drinksCountFetch());
